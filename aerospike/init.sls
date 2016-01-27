@@ -1,3 +1,5 @@
+{% from "aerospike/map.jinja" import aerospike with context %}
+
 #include:
 #  - aerospike.upstream
 

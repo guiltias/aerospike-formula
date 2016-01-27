@@ -1,0 +1,11 @@
+aerospike:
+  replication_factor: 1
+  memory_size: '13G'
+  default_ttl: '90d'
+  max_ttl: '180d' 
+  high_water_disk_pct: 80
+  high_water_memory_pct: 90
+  evict_tenths_pct: 10
+  multicast_address: '239.1.99.204'
+  storage_enging: 'device'
+  devices: ['/dev/sdb']

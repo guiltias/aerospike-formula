@@ -1,3 +1,5 @@
+{% from "aerospike/map.jinja" import aerospike with context %}
+
 {# Currently this script works only on ubuntu 12.04/14.04 #}
 {% if grains['os_family'] == 'Debian' %}
 /usr/src/aerospike:
