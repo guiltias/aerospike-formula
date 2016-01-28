@@ -55,7 +55,7 @@ namespace {{ aerospike.namespace }} {
   evict-tenths-pct {{ aerospike.evict_tenths_pct }}
 
   storage-engine {{ aerospike.storage_engine }} {
-{% for dev in aerospike.disks %}    device {{ disk }}
+{% for dev in aerospike.disks %}    device {{ dev }}
 {% endfor %}
     write-block-size {{ aerospike.write_block_size }}
     scheduler-mode noop
