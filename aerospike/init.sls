@@ -21,11 +21,14 @@ include:
     - mode: 640
     - source: salt://aerospike/files/aerospike.conf.jinja
     - template: jinja
+    - watch_in:
+      - service: run-aerospike
 
 run-aerospike:
   service.running:
     - enable: true
     - name: aerospike
+    - full_restart: True
     - require:
       - cmd: install-aerospike
       - file: /etc/aerospike/aerospike.conf
