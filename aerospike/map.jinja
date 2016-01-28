@@ -3,4 +3,5 @@
 {# merge default settings with pillar-provided #}
 {% set aerospike = salt['pillar.get']('aerospike', default=defaults.aerospike, merge=True) %}
 {# NOTE: This set depends on local_interfaces custom grain which generates dict with list of local interfaces and ther ip addresses #}
-{% set local_ip = salt['grains.get']('local_interfaces').values[0] %}
+{# TODO: this evaluation is creepy, think about more efficient way #}
+{% set local_ip = salt['grains.get']('local_interfaces')[0].values().0 %}
