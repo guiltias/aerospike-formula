@@ -22,11 +22,10 @@ include:
     - source: salt://aerospike/files/aerospike.conf.jinja
     - template: jinja
 
-# temporary suspended
-#run-aerospike:
-#  service.running:
-#    - enable: true
-#    - name: aerospike
-#    - require:
-#      - cmd: install-aerospike
-#      - file: /etc/aerospike/aerospike.conf
+run-aerospike:
+  service.running:
+    - enable: true
+    - name: aerospike
+    - require:
+      - cmd: install-aerospike
+      - file: /etc/aerospike/aerospike.conf
