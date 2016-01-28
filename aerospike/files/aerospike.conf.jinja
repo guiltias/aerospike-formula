@@ -1,3 +1,5 @@
+{% from "aerospike/map.jinja" import aerospike with context %}
+
 service {
   user root
   group root
@@ -28,7 +30,7 @@ network {
 
   heartbeat {
     mode multicast
-    address 239.1.99.204
+    address {{ aerospike.multicast_address }}
     port 9918
     interval 250
     timeout 25
@@ -43,18 +45,19 @@ network {
   }
 }
 
-namespace dmp {
-  replication-factor 1
-  memory-size 13G
-  default-ttl 90d # 30 days, use 0 to never expire/evict.
-  max-ttl 180d
-  high-water-disk-pct 50
-  high-water-memory-pct 90
-  evict-tenths-pct 10
+namespace {{ aerospike.namespace }} {
+  replication-factor {{ aerospike.replication_factor }}
+  memory-size {{ aerospike.memory_size }}
+  default-ttl {{ aerospike.default_ttl }}
+  max-ttl {{ aerospike.max_ttl }}
+  high-water-disk-pct {{ aerospike.high_water_disk_pct }}
+  high-water-memory-pct {{ aerospike.high_water_memory_pct }}
+  evict-tenths-pct {{ aerospike.evict_tenths_pct }}
 
-  storage-engine device {     # Configure the storage-engine to use persistence
-    device /dev/xvdb    # raw device. Maximum size is 2 TiB
-    write-block-size 128K   # adjust block size to make it efficient for SSDs.
+  storage-engine {{ aerospike.storage_engine }} {
+{% for dev in aerospike.disks %}    device {{ disk }}
+{% endfor %}
+    write-block-size {{ aerospike.write_block_size }}
     scheduler-mode noop
   }
 }

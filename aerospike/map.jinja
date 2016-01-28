@@ -1,4 +1,4 @@
 {# import default settings provided by formula#}
 {% import_yaml "postgres/defaults.yaml" as defaults %}
 {# merge default settings with pillar-provided #}
-{% set aerospike = salt['pillar.get']('aerospike', default=default.aerospike, merge=True) %}
+{% set aerospike = salt['pillar.get']('aerospike', default=defaults.aerospike, merge=True) %}
