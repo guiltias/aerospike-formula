@@ -9,5 +9,5 @@ aerospike:
   evict_tenths_pct: 10
   multicast_address: '239.1.99.204'
   storage_engine: 'device'
-  devices: ['/dev/sdb']
+  disks: ['/dev/sdb']
   write_block_size: '256K'
