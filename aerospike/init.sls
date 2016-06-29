@@ -40,3 +40,10 @@ run-aerospike:
     - group: root
     - mode: 0644
     - source: salt://aerospike/files/aerospike_monitor
+
+/usr/local/bin/aerospike_latency.py:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 0755
+    - source: salt://aerospike/files/aerospike_latency.py

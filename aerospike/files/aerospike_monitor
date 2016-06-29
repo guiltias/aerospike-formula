@@ -1,1 +1,2 @@
 * * * * * root asinfo -v stats|tr ';' '\n'|tr '=' ' '|awk '$2 ~ /^[0-9]+$/{print "aerospike."$_"|g"}'|tr ' ' ':' | nc -u -w1 127.0.0.1 8125 
+* * * * * root /usr/local/bin/aerospike_latency.py | nc -u -w1 127.0.0.1 8125
