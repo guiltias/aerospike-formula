@@ -32,3 +32,11 @@ run-aerospike:
     - require:
       - cmd: install-aerospike
       - file: /etc/aerospike/aerospike.conf
+
+{# aerospike monitor dependling on statsd port #}
+/etc/cron.d/aerospike_monitor:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 0644
+    - source: salt://aerospike/files/aerospike_monitor
